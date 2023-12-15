@@ -1,0 +1,199 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.main-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+#timer-clock {
+  width: 16vw;
+}
+
+.timer-container {
+  position: absolute;
+  left: 1vw;
+  top: 1vw;
+}
+svg#timer-clock path {
+  will-change: auto;
+  stroke-width: 0.8vw;
+  stroke-miterlimit: round;
+  transition: stroke-dashoffset 850ms ease-in-out;
+}
+
+.timer {
+    position: relative;
+}
+
+.counter-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#timer-counter-text {
+    color: #000;
+    font-family: Poppins;
+    font-size: 2.7vw;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.score-data p {
+  text-align: center;
+  color: #000;
+  font-family: Poppins;
+  font-size: 1.7vw;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.score-data {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.score-data span {
+  color: #fff;
+  background-color: #271b6c;
+  font-size: 1.4vw;
+  padding: 0.3vw 0.7vw;
+  border-radius: 0.5vw;
+}
+
+.qa-sec {
+  width: 100%;
+  height: 100%;
+  float: right;
+}
+
+.qa-cont {
+    width: 100%;
+    height: 100%;
+}
+text.circle-styling {
+  font-size: 8px;
+  text-align: center;
+  color: #000;
+  font-family: Poppins;
+  font-weight: 300;
+  line-height: normal;
+  cursor: pointer;
+}
+.m1Orb{
+  cursor: pointer;
+}
+.orbit-event {
+  pointer-events: none;
+}
+text.circle-styling.question-text {
+  font-size: 20px;
+}
+
+
+@keyframes sf-fly-by-1 {
+  from {
+      transform: translateZ(-600px);
+      opacity: 0.5;
+  }
+  to {
+      transform: translateZ(0);
+      opacity: 0.5;
+  }
+}
+@keyframes sf-fly-by-2 {
+  from {
+      transform: translateZ(-1200px);
+      opacity: 0.5;
+  }
+  to {
+      transform: translateZ(-600px);
+      opacity: 0.5;
+  }
+}
+@keyframes sf-fly-by-3 {
+  from {
+      transform: translateZ(-1800px);
+      opacity: 0.5;
+  }
+  to {
+      transform: translateZ(-1200px);
+      opacity: 0.5;
+  }
+}
+.star-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  perspective: 600px;
+  -webkit-perspective: 600px;
+  z-index: 0;
+}
+/* .star-field .layer {
+  box-shadow: -411px -476px #2000ff, 777px -407px #2000ff, -387px -477px #2000ff, -91px -235px #2000ff, 491px -460px #2000ff, 892px -128px #2000ff, 758px -277px #2000ff, 596px 378px #2000ff, 647px 423px whitesmoke, 183px 389px #2000ff,
+      524px -237px #2000ff, 679px -535px #2000ff, 158px 399px #2000ff, 157px 249px #2000ff, 81px -450px #2000ff, 719px -360px #2000ff, -499px 473px #2000ff, -158px -349px #2000ff, 870px -134px #2000ff, 446px 404px #2000ff,
+      440px 490px #2000ff, 414px 507px #2000ff, -12px 246px #2000ff, -384px 369px #2000ff, 641px -413px #2000ff, 822px 516px #2000ff, 449px 132px #2000ff, 727px 146px #2000ff, -315px -488px #2000ff, 952px -70px #2000ff,
+      -869px -29px #2000ff, 502px 80px #2000ff, 764px 342px #2000ff, -150px -380px #2000ff, 654px -426px #2000ff, -325px -263px #2000ff, 755px -447px #2000ff, 729px -177px #2000ff, -682px -391px #2000ff, 554px -176px #2000ff,
+      -85px -428px #2000ff, 714px 55px #2000ff, 359px -285px #2000ff, -362px -508px #2000ff, 468px -265px #2000ff, 74px -500px #2000ff, -514px 383px #2000ff, 730px -92px #2000ff, -112px 287px #2000ff, -853px 79px #2000ff,
+      828px 475px #2000ff, -681px 13px #2000ff, -176px 209px #2000ff, 758px 457px #2000ff, -383px -454px #2000ff, 813px 179px #2000ff, 608px 98px whitesmoke, -860px -65px #2000ff, -572px 272px #2000ff, 459px 533px #2000ff,
+      624px -481px #2000ff, 790px 477px #2000ff, 731px -403px #2000ff, 70px -534px #2000ff, -23px 510px #2000ff, -652px -237px whitesmoke, -690px 367px #2000ff, 810px 536px #2000ff, 774px 293px #2000ff, -362px 97px #2000ff,
+      563px 47px #2000ff, 313px 475px #2000ff, 839px -491px #2000ff, -217px 377px #2000ff, -581px 239px #2000ff, -857px 72px #2000ff, -23px 340px #2000ff, -837px 246px white, 170px -502px #2000ff, 822px -443px #2000ff, 795px 497px #2000ff,
+      -814px -337px #2000ff, 206px -339px #2000ff, -779px 108px #2000ff, 808px 2px #2000ff, 665px 41px #2000ff, -564px 64px #2000ff, -380px 74px #2000ff, -369px -60px #2000ff, 47px -495px #2000ff, -383px 368px #2000ff, 419px 288px #2000ff,
+      -598px -50px #2000ff, -833px 187px #2000ff, 378px 325px whitesmoke, -703px 375px #2000ff, 392px 520px #2000ff, -492px -60px #2000ff, 759px 288px #2000ff, 98px -412px #2000ff, -911px -277px #2000ff;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+} */
+.star-field .layer:nth-child(1) {
+  animation: sf-fly-by-1 5s linear infinite;
+}
+.star-field .layer:nth-child(2) {
+  animation: sf-fly-by-2 5s linear infinite;
+}
+.star-field .layer:nth-child(3) {
+  animation: sf-fly-by-3 5s linear infinite;
+}
+
+
