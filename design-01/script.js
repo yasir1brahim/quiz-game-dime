@@ -18,10 +18,12 @@ meters.forEach(path => {
 // Counter JS
 const progressBarShape = document.getElementById('progressBarShape');
 progressBarShape.removeAttribute('style');
+var progressBarResult;
+var timeStop;
 
 function startTimer(durationInSeconds) {
   let seconds = durationInSeconds;
-  setInterval(function () {
+  timeStop = setInterval(function () {
     if (seconds > 0 || progressBarResult < 0) {
       seconds--;
     }
@@ -30,11 +32,15 @@ function startTimer(durationInSeconds) {
     const formattedTime = pad(minutes) + ':' + pad(seconds % 60);
     const progressBarValue = document.getElementById('progressBarShape').getAttribute("stroke-dashoffset");
     const progressBarValueCalc = 350 / countdownDuration;
-    const progressBarResult = progressBarValueCalc;
+    progressBarResult = progressBarValueCalc;
 
     progressBarShape.setAttribute("stroke-dashoffset", (progressBarValue - progressBarResult));
 
     document.getElementById('timer-counter-text').innerText = formattedTime;
+    if (formattedTime == "00:00"){
+      showGameOverModal();
+      clearInterval(timeStop);
+    }
   }, 1000);
 }
 
@@ -96,7 +102,7 @@ function rendersQuestions(questionNumber){
     document.querySelector("#questions-graph text").innerHTML = questions[questionNumber];
     for (let index = 0; index < answers.length; index++) {
       var element = $('.orbit-event')[index]
-      element.style.display = "block";
+      // element.style.display = "block";
       element.setAttribute('onclick', 'selectAnswer(this)');
       var elementText = $('.orbit-event text')[index]
       elementText.textContent = answers[index]
@@ -105,8 +111,7 @@ function rendersQuestions(questionNumber){
     $('#questions-graph').css('pointer-events', 'none');
   }
   else {
-    document.querySelector("#questions-graph text").innerHTML = "Quiz End"
-    document.querySelector("#final-score").innerHTML = SCORE.toString();
+    clearInterval(timeStop);
     showGameOverModal();
   }
 }
@@ -145,12 +150,17 @@ startTimerBtn.addEventListener('click', function () {
   startTimer(countdownDuration);
   this.style.display = 'none';
   rendersQuestions(QUESTION_NUMBER);
+  startAnimation();
 });
 
 // Animation JS
 window.onresize = window.onload = function () { gsap.set('.m1_stage', { x: '55%', y: '45%', opacity: 1 }) }
 
-gsap.timeline({ defaults: { duration: 45 } })
+
+function startAnimation(){
+
+  
+  gsap.timeline({ defaults: { duration: 45 } })
   .from('.main1', { duration: 1, autoAlpha: 0, ease: 'power1.inOut' }, 0)
   .fromTo('.m1_cGroup', { opacity: 0 }, { duration: 0.3, opacity: 1, stagger: -0.1 }, 0)
   .from('.m1_cGroup', { duration: 2.5, scale: -0.3, transformOrigin: '50% 50%', stagger: -0.05, ease: 'elastic' }, 0)
@@ -234,16 +244,20 @@ gsap.timeline({ defaults: { duration: 45 } })
   .fromTo('.m1OrbBlank', { opacity: 0 }, { duration: 0.8, opacity: function (i) { return 0.2 + i / 7 }, stagger: 0.1, overwrite: 'auto' }, 'orbs')
   .fromTo('.m1OrbBlank', { x: function (i) { return 620 - i / 4 * 380 }, transformOrigin: function (i) { return -(620 - i / 4 * 380) + 'px 0px' }, rotation: function (i) { return [99, -10, 55, 110, 120][i] } }, { rotation: '+=75', yoyo: true, repeat: -1 }, 'orbs')
 
+}
 
 
   function showGameOverModal() {
     document.querySelector(".main-wrapper").classList.add("blur");
+    document.querySelector("#questions-graph text").innerHTML = "Quiz End"
+    document.querySelector("#final-score").innerHTML = SCORE.toString();
     gsap.to("#gameOverModal", { duration: 0.5, opacity: 1, display: "block", ease: "power2.out" });
   }
   
   function hideGameOverModal() {
     document.querySelector(".main-wrapper").classList.remove("blur");
     gsap.to("#gameOverModal", { duration: 0.5, opacity: 0, display: "none", ease: "power2.out" });
+    window.location.reload();
   }
   
   

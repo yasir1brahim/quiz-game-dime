@@ -66,7 +66,7 @@ svg#timer-clock path {
 #timer-counter-text {
     color: #000;
     font-family: Poppins;
-    font-size: 2.7vw;
+    font-size: 3.7vw;
     font-weight: 700;
     line-height: 1;
 }
@@ -108,11 +108,11 @@ svg#timer-clock path {
     height: 100%;
 }
 text.circle-styling {
-  font-size: 8px;
+  font-size: 12px;
   text-align: center;
   color: #000;
   font-family: Poppins;
-  font-weight: 300;
+  font-weight: 600;
   line-height: normal;
   cursor: pointer;
 }
@@ -121,10 +121,11 @@ text.circle-styling {
 }
 .orbit-event {
   pointer-events: none;
-  display: none;
+  /* display: none; */
 }
 text.circle-styling.question-text {
   font-size: 20px;
+  font-weight: 600;
 }
 
 
