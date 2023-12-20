@@ -1,5 +1,5 @@
 const questions = ["What color is the ocean?", "What color is a cloud?", "What color is the sun?"]
-const answers = ["Blue", "White", "Yellow"]
+const answers = ["Blue", "White", "Yellow", "Black", "Green", "Red"]
 
 // Meter JS
 
@@ -42,51 +42,59 @@ function pad(value) {
   return value < 10 ? '0' + value : value;
 }
 
-var questionNumber = 0
-var quizeScore = 0
+var QUESTION_NUMBER = 0
+var SCORE = 0
 const CORRECT_POPUP = {text:"Correct!!", color:"green"};
 const TRY_AGAIN_POPUP = {text:"Try Again!", color:"red"};
+const COLORS = {
+  lightGrey: "#ececec",
+  darkGrey: "#d1d1d1",
+  green: "green",
+  red: "red",
+  lightBlue: "#1585fe",
+  darkBlue: "#271b6c"
+}
 
 function updateAnswerFeedback(clickedElement, isCorrect) {
   const circle = clickedElement.querySelector("circle");
   const text = clickedElement.querySelector("text");
   if (isCorrect) {
     displayFeedback(CORRECT_POPUP)
-    quizeScore += 3;
-    document.getElementById('score').innerText = quizeScore.toString();
-    circle.style.fill = "#2ba001a8"; // green
+    circle.style.fill = COLORS.green;
+    SCORE += 3;
+    document.getElementById('score').innerText = SCORE.toString();
   } else {
     displayFeedback(TRY_AGAIN_POPUP)
-    if (quizeScore != 0 ) {
-      quizeScore -= 1;
-      document.getElementById('score').innerText = quizeScore.toString();
+    circle.style.fill = COLORS.red;
+    if (SCORE != 0 ) {
+      SCORE -= 1;
+      document.getElementById('score').innerText = SCORE.toString();
     }
-    circle.style.fill = "#db2623"; // red
   }
+  circle.style.stroke = COLORS.darkGrey;
 
-  circle.style.stroke = "#d1d1d1";
   setTimeout(() => {
-    circle.style.fill = isCorrect ? "#ececec" : "#1585fe";
-    circle.style.stroke = "#d1d1d1";
+    circle.style.fill = isCorrect ? COLORS.lightGrey : COLORS.lightBlue;
+    circle.style.stroke = isCorrect ? COLORS.darkGrey : COLORS.darkBlue;
     if (isCorrect) {
       circle.style.pointerEvents =  'none';
       text.style.pointerEvents =  'none';
-      questionNumber += 1;
-      rendersQuestions(questionNumber);
+      QUESTION_NUMBER += 1;
+      rendersQuestions(QUESTION_NUMBER);
     }
   }, 1500);
 }
 
 function selectAnswer(clickedElement) {
   var elementText = $(clickedElement).find('.circle-styling').text();
-  var isCorrect = elementText == answers[questionNumber];
+  var isCorrect = elementText == answers[QUESTION_NUMBER];
   updateAnswerFeedback(clickedElement, isCorrect);
 }
 
-function rendersQuestions(questNumber){
+function rendersQuestions(questionNumber){
 
-      document.querySelector("#questions-graph text").innerHTML = questions[questNumber]? questions[questNumber] : "Quiz End";
-      for (let index = 0; index < answers.length; index++) {
+    document.querySelector("#questions-graph text").innerHTML = questions[questionNumber]? questions[questionNumber] : "Quiz End";
+    for (let index = 0; index < answers.length; index++) {
       var element = $('.orbit-event')[index]
       element.style.display = "block";
       element.setAttribute('onclick', 'selectAnswer(this)');
@@ -131,7 +139,7 @@ let questionOrbits = $('.orbits-animate circle');
 startTimerBtn.addEventListener('click', function () {
   startTimer(countdownDuration);
   this.style.display = 'none';
-  rendersQuestions(questionNumber);
+  rendersQuestions(QUESTION_NUMBER);
 });
 
 // Animation JS
