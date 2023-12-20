@@ -92,8 +92,8 @@ function selectAnswer(clickedElement) {
 }
 
 function rendersQuestions(questionNumber){
-
-    document.querySelector("#questions-graph text").innerHTML = questions[questionNumber]? questions[questionNumber] : "Quiz End";
+  if (questionNumber < questions.length) {
+    document.querySelector("#questions-graph text").innerHTML = questions[questionNumber];
     for (let index = 0; index < answers.length; index++) {
       var element = $('.orbit-event')[index]
       element.style.display = "block";
@@ -103,7 +103,12 @@ function rendersQuestions(questionNumber){
     }
     $('.orbit-event').css('pointer-events', 'unset');
     $('#questions-graph').css('pointer-events', 'none');
-    
+  }
+  else {
+    document.querySelector("#questions-graph text").innerHTML = "Quiz End"
+    document.querySelector("#final-score").innerHTML = SCORE.toString();
+    showGameOverModal();
+  }
 }
 
 function displayFeedback(feedbackProp) {
@@ -229,3 +234,16 @@ gsap.timeline({ defaults: { duration: 45 } })
   .fromTo('.m1OrbBlank', { opacity: 0 }, { duration: 0.8, opacity: function (i) { return 0.2 + i / 7 }, stagger: 0.1, overwrite: 'auto' }, 'orbs')
   .fromTo('.m1OrbBlank', { x: function (i) { return 620 - i / 4 * 380 }, transformOrigin: function (i) { return -(620 - i / 4 * 380) + 'px 0px' }, rotation: function (i) { return [99, -10, 55, 110, 120][i] } }, { rotation: '+=75', yoyo: true, repeat: -1 }, 'orbs')
 
+
+
+  function showGameOverModal() {
+    document.querySelector(".main-wrapper").classList.add("blur");
+    gsap.to("#gameOverModal", { duration: 0.5, opacity: 1, display: "block", ease: "power2.out" });
+  }
+  
+  function hideGameOverModal() {
+    document.querySelector(".main-wrapper").classList.remove("blur");
+    gsap.to("#gameOverModal", { duration: 0.5, opacity: 0, display: "none", ease: "power2.out" });
+  }
+  
+  
