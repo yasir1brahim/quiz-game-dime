@@ -65,6 +65,8 @@ function updateAnswerFeedback(clickedElement, isCorrect) {
   const circle = clickedElement.querySelector("circle");
   const text = clickedElement.querySelector("text");
   if (isCorrect) {
+    circle.style.pointerEvents =  'none';
+    text.style.pointerEvents =  'none';
     displayFeedback(CORRECT_POPUP)
     circle.style.fill = COLORS.green;
     SCORE += 3;
@@ -83,8 +85,6 @@ function updateAnswerFeedback(clickedElement, isCorrect) {
     circle.style.fill = isCorrect ? COLORS.lightGrey : COLORS.lightBlue;
     circle.style.stroke = isCorrect ? COLORS.darkGrey : COLORS.darkBlue;
     if (isCorrect) {
-      circle.style.pointerEvents =  'none';
-      text.style.pointerEvents =  'none';
       QUESTION_NUMBER += 1;
       rendersQuestions(QUESTION_NUMBER);
     }
@@ -156,6 +156,24 @@ startTimerBtn.addEventListener('click', function () {
 // Animation JS
 window.onresize = window.onload = function () { gsap.set('.m1_stage', { x: '55%', y: '45%', opacity: 1 }) }
 
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  }
+
+  const originalArray = [
+    [0.4, 0.9],
+    [0.9, 1.4],
+    [0.2, 0.7],
+    [0.7, 1.2],
+    [0, 0.5],
+    [0.5, 1],
+  ];
+
+  const shuffledArray = shuffleArray([...originalArray]);
 
 function startAnimation(){
 
@@ -184,59 +202,51 @@ function startAnimation(){
     );
   }, 'orbs+=0.5')
 
-  .fromTo('.orb1', { xPercent: -120, yPercent: 50 }, {
+  .fromTo('.bubble6', { xPercent: -100, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
-      start: 1.03,
-      end: 1.22
+      start: shuffledArray[0][0],
+      end: shuffledArray[0][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.orb2', { xPercent: -100, yPercent: -10 }, {
+  .fromTo('.bubble5', { xPercent: -100, yPercent: -40 }, {
+    motionPath: {
+      path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
+      start: shuffledArray[1][0],
+      end: shuffledArray[1][1],
+    }, ease: 'none', yoyo: true, repeat: -1
+  }, 'orbs')
+
+  .fromTo('.bubble4', { xPercent: -100, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
-      start: 0.98,
-      end: 1.2
+      start: shuffledArray[2][0],
+      end: shuffledArray[2][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.orb3', { xPercent: -50, yPercent: -15 }, {
+  .fromTo('.bubble3', { xPercent: -100, yPercent: -40 }, {
+    motionPath: {
+      path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
+      start: shuffledArray[3][0],
+      end: shuffledArray[3][1],
+    }, ease: 'none', yoyo: true, repeat: -1
+  }, 'orbs')
+
+  .fromTo('.bubble2', { xPercent: -100, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
-      start: 1.06,
-      end: 1.31
+      start: shuffledArray[4][0],
+      end: shuffledArray[4][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.orb3b', { xPercent: -100, yPercent: -25 }, {
+  .fromTo('.bubble1', { xPercent: -100, yPercent: -40 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
-      start: 1.49,
-      end: 1.65
-    }, ease: 'none', yoyo: true, repeat: -1
-  }, 'orbs')
-
-  .fromTo('.orb3c', { xPercent: 10, yPercent: -105 }, {
-    motionPath: {
-      path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
-      start: 0.95,
-      end: 1.2
-    }, ease: 'none', yoyo: true, repeat: -1
-  }, 'orbs')
-
-  .fromTo('.orb4', { xPercent: -50, yPercent: -25 }, {
-    motionPath: {
-      path: function () { return MotionPathPlugin.convertToPath('.c1_line4', false)[0] },
-      start: 1.14,
-      end: 1.26
-    }, ease: 'none', yoyo: true, repeat: -1
-  }, 'orbs')
-
-  .fromTo('.orb4b', { xPercent: -100, yPercent: -25 }, {
-    motionPath: {
-      path: function () { return MotionPathPlugin.convertToPath('.c1_line4', false)[0] },
-      start: 1.41,
-      end: 1.6
+      start: shuffledArray[5][0],
+      end: shuffledArray[5][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
