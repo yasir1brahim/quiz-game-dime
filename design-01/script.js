@@ -1,5 +1,5 @@
 const questions = ["What color is the ocean? ", "What color is a cloud?", "What color is the sun?"]
-const answers = ["Blue", "White", "Yellow", "Black", "Green", "Lorem is simply dummy."]
+const answers = ["Blue", "White", "Yellow", "Black", "Green", "orange"]
 
 var QUESTION_NUMBER = 0
 var SCORE = 0
@@ -126,7 +126,7 @@ function startAnimation(){
     );
   }, 'orbs+=0.5')
 
-  .fromTo('.bubble6', { xPercent: -100, yPercent: -50 }, {
+  .fromTo('.bubble6', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
       start: shuffledArray[0][0],
@@ -134,7 +134,7 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.bubble5', { xPercent: -100, yPercent: -40 }, {
+  .fromTo('.bubble5', { xPercent: -110, yPercent: -40 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
       start: shuffledArray[1][0],
@@ -142,7 +142,7 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
   
-  .fromTo('.bubble4', { xPercent: -100, yPercent: -50 }, {
+  .fromTo('.bubble4', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
       start: shuffledArray[2][0],
@@ -150,7 +150,7 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
   
-  .fromTo('.bubble3', { xPercent: -100, yPercent: -40 }, {
+  .fromTo('.bubble3', { xPercent: -110, yPercent: -40 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
       start: shuffledArray[3][0],
@@ -158,7 +158,7 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.bubble2', { xPercent: -100, yPercent: -50 }, {
+  .fromTo('.bubble2', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
       start: shuffledArray[4][0],
@@ -166,7 +166,7 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
   
-  .fromTo('.bubble1', { xPercent: -100, yPercent: -40 }, {
+  .fromTo('.bubble1', { xPercent: -110, yPercent: -40 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
       start: shuffledArray[5][0],
@@ -235,7 +235,7 @@ function rendersQuestions(questionNumber){
     document.querySelector("#questions-graph text").innerHTML = questions[questionNumber];
     for (let index = 0; index < answers.length; index++) {
       var element = $('.orbit-event')[index]
-      // element.style.display = "block";
+      element.style.display = "block";
       element.setAttribute('onclick', 'selectAnswer(this)');
       var elementText = $('.orbit-event text')[index]
       elementText.textContent = answers[index]

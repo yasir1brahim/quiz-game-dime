@@ -125,7 +125,7 @@ text.circle-styling {
 }
 .orbit-event {
   pointer-events: none;
-  /* display: none; */
+  display: none;
 }
 text.circle-styling.question-text {
   font-size: 10px;
