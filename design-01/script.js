@@ -1,5 +1,5 @@
-const questions = ["What color is the ocean?", "What color is a cloud?", "What color is the sun?"]
-const answers = ["Blue", "White", "Yellow", "Black", "Green", "Red"]
+const questions = ["What color is the ocean? ", "What color is a cloud?", "What color is the sun?"]
+const answers = ["Blue", "White", "Yellow", "Black", "Green", "Lorem is simply dummy."]
 
 var QUESTION_NUMBER = 0
 var SCORE = 0

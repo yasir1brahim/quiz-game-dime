@@ -38,7 +38,10 @@ body {
 #timer-clock {
   width: 16vw;
 }
-
+.main1 {
+  position: relative;
+  top: -1vw;
+}
 .timer-container {
   position: absolute;
   left: 1vw;
@@ -108,13 +111,14 @@ svg#timer-clock path {
     height: 100%;
 }
 text.circle-styling {
-  font-size: 12px;
+  font-size: 7px;
   text-align: center;
   color: #000;
   font-family: Poppins;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   cursor: pointer;
+  line-height: 1;
 }
 .m1Orb{
   cursor: pointer;
@@ -124,8 +128,9 @@ text.circle-styling {
   /* display: none; */
 }
 text.circle-styling.question-text {
-  font-size: 20px;
+  font-size: 10px;
   font-weight: 600;
+  line-height: normal;
 }
 
 
