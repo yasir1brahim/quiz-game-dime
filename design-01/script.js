@@ -1,5 +1,5 @@
-const questions = ["What color is the ocean? ", "What color is a cloud?", "What color is the sun?"]
-const answers = ["Blue", "White", "Yellow", "Black", "Green", "orange"]
+const questions = ["What color is the ocean? ", "What color is a cloud?", "What color is the sun?", "What color is the moon?", "What color is the grass?"]
+const answers = ["Blue", "White", "Yellow", "Black", "Green", "Orange", "Red", "Purple"]
 
 var QUESTION_NUMBER = 0
 var SCORE = 0
@@ -29,6 +29,8 @@ const originalArray = [
   [0.7, 1.2],
   [0, 0.5],
   [0.5, 1],
+  [0.3, 0.8],
+  [0.8, 1.3]
 ];
 
 
@@ -126,7 +128,7 @@ function startAnimation(){
     );
   }, 'orbs+=0.5')
 
-  .fromTo('.bubble6', { xPercent: -110, yPercent: -50 }, {
+  .fromTo('.bubble7', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
       start: shuffledArray[0][0],
@@ -134,43 +136,59 @@ function startAnimation(){
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 
-  .fromTo('.bubble5', { xPercent: -110, yPercent: -40 }, {
+  .fromTo('.bubble6', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
       start: shuffledArray[1][0],
       end: shuffledArray[1][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
-  
-  .fromTo('.bubble4', { xPercent: -110, yPercent: -50 }, {
+
+  .fromTo('.bubble5', { xPercent: -110, yPercent: -40 }, {
     motionPath: {
-      path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
+      path: function () { return MotionPathPlugin.convertToPath('.c1_line1', false)[0] },
       start: shuffledArray[2][0],
       end: shuffledArray[2][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
   
-  .fromTo('.bubble3', { xPercent: -110, yPercent: -40 }, {
+  .fromTo('.bubble4', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
       start: shuffledArray[3][0],
       end: shuffledArray[3][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
+  
+  .fromTo('.bubble3', { xPercent: -110, yPercent: -40 }, {
+    motionPath: {
+      path: function () { return MotionPathPlugin.convertToPath('.c1_line2', false)[0] },
+      start: shuffledArray[4][0],
+      end: shuffledArray[4][1],
+    }, ease: 'none', yoyo: true, repeat: -1
+  }, 'orbs')
 
   .fromTo('.bubble2', { xPercent: -110, yPercent: -50 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
-      start: shuffledArray[4][0],
-      end: shuffledArray[4][1],
+      start: shuffledArray[5][0],
+      end: shuffledArray[5][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
   
   .fromTo('.bubble1', { xPercent: -110, yPercent: -40 }, {
     motionPath: {
       path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
-      start: shuffledArray[5][0],
-      end: shuffledArray[5][1],
+      start: shuffledArray[6][0],
+      end: shuffledArray[6][1],
+    }, ease: 'none', yoyo: true, repeat: -1
+  }, 'orbs')
+
+  .fromTo('.bubble0', { xPercent: -110, yPercent: -40 }, {
+    motionPath: {
+      path: function () { return MotionPathPlugin.convertToPath('.c1_line3', false)[0] },
+      start: shuffledArray[7][0],
+      end: shuffledArray[7][1],
     }, ease: 'none', yoyo: true, repeat: -1
   }, 'orbs')
 

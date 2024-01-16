@@ -133,6 +133,9 @@ text.circle-styling.question-text {
   line-height: normal;
 }
 
+#startTimer{
+  cursor: pointer;
+}
 
 @keyframes sf-fly-by-1 {
   from {
